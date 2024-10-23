@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.22'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.22'
+    id 'application'
+}
+
+group = 'pw.mihou'
+description = 'A template for Kotlin Discord bots that aims to use Reakt + Nexus.'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+application {
+    mainClassName = 'main.MainKt' // Change this to your main file if you plan on changing the package.
+}
+
+
+dependencies {
+    implementation 'org.javacord:javacord:3.8.0'
+    implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.20.0'
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+
+    implementation 'pw.mihou:nexus:fd92045cb8'
+    implementation 'pw.mihou:reakt.discord:05c76979ff'
+    implementation 'pw.mihou:nexus.coroutines:582083f6cb'
+    implementation 'pw.mihou:envi:ccf6de7a5a'
+
+    implementation 'ch.qos.logback:logback-classic:1.4.12'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation 'org.jetbrains.kotlinx:kotlinx-datetime:0.4.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.4'
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+kotlin {
+    jvmToolchain(21)
+}
